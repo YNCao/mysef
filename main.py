@@ -20,14 +20,14 @@ sys.path.append(progpath)
 import modellearning
 import sef
 
-device = torch.device("cuda:3" if torch.cuda.is_available() > 0 else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() > 0 else "cpu")
 device_name = device.type+':'+str(device.index) if device.type=='cuda' else 'cpu'
 
 
 ########################################################################################################## initialize params
 datasetname = "cubbirds" 
 image_size = 448
-batchsize = 16
+batchsize = 32
 nthreads = 8
 lr = 1e-2
 lmgm = 1
