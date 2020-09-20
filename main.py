@@ -75,7 +75,7 @@ log_items = r'{}-net{}-att{}-lmgm{}-entropy{}-soft{}-lr{}-imgsz{}-bsz{}'.format(
     datasetname, int(networkname[6:8]), nparts, lmgm, entropy, soft, lr, image_size, batchsize)
 writer = tb.SummaryWriter(comment='-'+log_items)
 if not os.path.exists('./results'):
-    os.mkdirs('./results')
+    os.makedirs('./results')
 logfile = open('./results/'+log_items+'.txt', 'w')
 modelname = log_items + '.model'
 
