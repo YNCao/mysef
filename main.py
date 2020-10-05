@@ -39,7 +39,7 @@ regmeth = 'cms'
 
 # number of attentions for different datasets
 if datasetname in ['cubbirds']:
-    nparts = 4
+    nparts = 3
 elif datasetname in ['vggaircraft']:
     nparts = 3
 elif datasetname in ['stdogs', 'stcars']:
@@ -49,7 +49,7 @@ else:
 
 
 # 'resnet50attention' for sef, 'resnet50maxent' for resnet with MaxEnt, 'resnet50vanilla' for the vanilla resnet
-networkname = 'resnet50vanilla'
+networkname = 'resnet50attention'
 if networkname.find('attention') > -1:  # sef based on resnet
     attention_flag = True
     maxent_flag = False
@@ -76,7 +76,7 @@ log_items = r'{}-net{}-att{}-lmgm{}-entropy{}-soft{}-lr{}-imgsz{}-bsz{}'.format(
 writer = tb.SummaryWriter(comment='-'+log_items)
 if not os.path.exists('./results'):
     os.makedirs('./results')
-logfile = open('./results/'+log_items+'.txt', 'w')
+logfile = open('./results/'+timeflag+log_items+'.txt', 'w')
 modelname = log_items + '.model'
 
 
