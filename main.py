@@ -20,14 +20,14 @@ sys.path.append(progpath)
 import modellearning
 import sef
 
-device = torch.device("cuda:3" if torch.cuda.is_available() > 0 else "cpu")
+device = torch.device("cuda:1" if torch.cuda.is_available() > 0 else "cpu")
 device_name = device.type+':'+str(device.index) if device.type=='cuda' else 'cpu'
 
 
 ########################################################################################################## initialize params
 datasetname = "cubbirds" 
 image_size = 448
-batchsize = 16
+batchsize = 32
 nthreads = 8
 lr = 1e-2
 lmgm = 1
@@ -76,7 +76,7 @@ log_items = r'{}-net{}-att{}-lmgm{}-entropy{}-soft{}-lr{}-imgsz{}-bsz{}'.format(
 writer = tb.SummaryWriter(comment='-'+log_items)
 if not os.path.exists('./results'):
     os.makedirs('./results')
-logfile = open('./results/'+log_items+'.txt', 'w')
+logfile = open('./results/'+timeflag+log_items+'.txt', 'w')
 modelname = log_items + '.model'
 
 
